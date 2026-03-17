@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mi Perfil Personal</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background-color:#f4f6f8;
+    text-align:center;
+}
+
+header{
+    background:#4CAF50;
+    color:white;
+    padding:20px;
+}
+
+section{
+    background:white;
+    margin:20px auto;
+    padding:20px;
+    width:60%;
+    border-radius:10px;
+    box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    background:#4CAF50;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#388E3C;
+}
+
+textarea{
+    width:80%;
+    height:80px;
+}
+
+.comment{
+    background:#eee;
+    margin:10px;
+    padding:10px;
+    border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Mi Perfil Personal</h1>
+<p>Bienvenido a mi página personal</p>
+</header>
+
+<section>
+<h2>Información Básica</h2>
+<p><b>Nombre:</b> José David Contreras Galeano</p>
+<p><b>Edad:</b> 20 años</p>
+<p><b>Color favorito:</b> Negro</p>
+<p><b>Comida favorita:</b> Hamburguesa</p>
+</section>
+
+<section>
+<h2>Intereses y Pasatiempos</h2>
+<ul>
+<li>Motos</li>
+<li>Programación</li>
+<li>Escuchar música</li>
+<li>Aprender tecnología</li>
+</ul>
+
+<button onclick="like()">👍 Me gusta</button>
+<p id="likes">Likes: 0</p>
+</section>
+
+<section>
+<h2>Datos Curiosos Sobre Mí</h2>
+<ul>
+<li>Me gustan mucho las motos de alto cc.</li>
+<li>Me interesa aprender a programar.</li>
+<li>Me gusta jugar futbol.</li>
+</ul>
+</section>
+
+<section>
+<h2>Mi Cita Favorita</h2>
+<blockquote>
+"La disciplina tarde o temprano vencerá a la inteligencia."
+</blockquote>
+</section>
+
+<section>
+<h2>Mi lema de vida</h2>
+<p>Siempre aprender algo nuevo cada día.</p>
+</section>
+
+<section>
+<h2>Juego rápido</h2>
+<p>Adivina mi número favorito (entre 1 y 5)</p>
+
+<input type="number" id="numero">
+<button onclick="adivinar()">Adivinar</button>
+
+<p id="resultado"></p>
+</section>
+
+<section>
+<h2>Comentarios</h2>
+
+<textarea id="comentario" placeholder="Escribe un comentario..."></textarea><br><br>
+
+<button onclick="agregarComentario()">Enviar comentario</button>
+
+<div id="listaComentarios"></div>
+
+</section>
+
+<script>
+
+let contadorLikes = 0;
+
+function like(){
+    contadorLikes++;
+    document.getElementById("likes").innerText = "Likes: " + contadorLikes;
+}
+
+function agregarComentario(){
+
+    let texto = document.getElementById("comentario").value;
+
+    if(texto !== ""){
+        let nuevo = document.createElement("div");
+        nuevo.className = "comment";
+        nuevo.innerText = texto;
+
+        document.getElementById("listaComentarios").appendChild(nuevo);
+
+        document.getElementById("comentario").value = "";
+    }
+}
+
+function adivinar(){
+
+    let numeroSecreto = 3;
+    let intento = document.getElementById("numero").value;
+
+    if(intento == numeroSecreto){
+        document.getElementById("resultado").innerText = "¡Correcto!";
+    }else{
+        document.getElementById("resultado").innerText = "Intenta otra vez";
+    }
+}
+
+</script>
+
+</body>
+</html>
